@@ -7,6 +7,7 @@ import Error from './components/Error';
 import About from './components/About';
 import Contact from './components/Contact';
 import Restaurant from './components/Restaurant';
+import Cart from './components/Cart';
 
 import {
   createBrowserRouter,
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
       {path: "/about", element: <About />},
       {path:'/contact',element: <Contact/>},
       {path: '/restaurants/:resid',element: <Restaurant/>}, 
+      {path: '/cart',element: <Cart/>},
   ],
   errorElement: <Error/>,
 },

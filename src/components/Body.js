@@ -1,13 +1,11 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
 import { useState, useEffect } from "react";
-import "../index.css";
 import {API_URL, logo_url} from "../utils/constants";
 import Card from "./Card";
 import { Link } from "react-router-dom";
 
 function Body() {
-    const [restaurants, setRestaurants] = useState([]);
+    const [restaurants, setRestaurants] = useState(["dummy"]);
     const [search, setSearch] = useState("");
     const [filteredRes, setFilteredRes] = useState([]);
     useEffect(() => {fetchData();}, []);
@@ -18,8 +16,9 @@ function Body() {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data = await response.json();
-            setRestaurants(data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
-            setFilteredRes(data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
+            console.log(data);
+            setRestaurants(data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || data?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+            setFilteredRes(data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || data?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         } catch (error) {
             console.error("Error fetching data:", error);
         }

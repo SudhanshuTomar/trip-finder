@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import ReactDOM from 'react-dom/client';
 import '../index.css';
 import logo from '../utils/logo.jpg';
 import {Link } from 'react-router-dom';
+import { CartContext } from '../utils/UserContext';
+
 
 function Header() {
     const [login,setlogin] = useState("Login");
+    // const cartValue = useContext(CartContext);
   return (
     <header className='flex justify-between items-center bg-slate-300 '>
         <img src={logo} alt="logo" className='w-28 '/>
@@ -20,6 +23,9 @@ function Header() {
             </li>
             <li className='mx-4'>
                 <Link to="/contact">Contact</Link>
+            </li>
+            <li className='mx-4'>
+                <Link to="/cart">Cart</Link>
             </li>
             </ul>
             <button 
