@@ -31,7 +31,9 @@ function cartReducer(state, action) {
       }
       
     case 'remove':
-      return state.filter((item) => item.id !== action.id);
+      return state.filter((item) => 
+        (item?.dish?.info?.id || item?.card?.info?.id) !== action.id
+      );
     default:
       return state;
   }
